@@ -1,10 +1,10 @@
 public class BudgetCategory {
-    public String _name;
-    public int _percentage_share;
+    public String name;
+    public int percentageShare;
 
-    BudgetCategory(String name, int perShare){
-        _name=name;
-        _percentage_share=perShare;
+    BudgetCategory(String categoryName, int categoryPercentage){
+        name=categoryName;
+        percentageShare=categoryPercentage;
     }
 
     public void printTest(){
