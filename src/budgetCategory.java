@@ -1,13 +1,26 @@
 public class BudgetCategory {
-    public String name;
+    private String name;
     public int percentageShare;
 
     BudgetCategory(String categoryName, int categoryPercentage){
-        name=categoryName;
+        changeName(categoryName);
         percentageShare=categoryPercentage;
     }
 
-    public void printTest(){
-        IO.println("Hello World from category");
+    public void changeName(String newName){
+        if(isValidName(newName)){
+            name = newName;
+        }
+        else {
+            IO.println("Invalid name");
+        }
+    }
+
+    private boolean isValidName(String testName){
+        return testName.matches("[a-zA-Z]+");
+    }
+
+    public String getName(){
+        return name;
     }
 }

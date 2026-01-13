@@ -44,7 +44,7 @@ public class Budget {
     public void printBudget(){
         for(int i = 0; i < categories.length; i++){
             String output = "Category %s : $%.2f";
-            IO.println(String.format(output, categories[i].name, dollarAmounts[i]));
+            IO.println(String.format(output, categories[i].getName(), dollarAmounts[i]));
         }
     }
 
@@ -59,6 +59,11 @@ public class Budget {
 
         newCategories[0] = new BudgetCategory(categoryName, categoryPercentage);
         newDollarAmounts[0] = categoryPercentage * totalBudget;
+
+        if (newCategories[0].getName() == null){
+            IO.println("Invalid category name");
+            return;
+        }
 
         for(int i = 1; i < newCategories.length; i++){
             newCategories[i] = categories[i-1];
