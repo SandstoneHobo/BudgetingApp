@@ -28,15 +28,15 @@ public class Budget {
         else{
             int total_percentage = 100;
             for(int i = 0; i < categories.length - 1; i++){
-                total_percentage = total_percentage - categories[i].percentageShare;
+                total_percentage = total_percentage - categories[i].getPercentageShare();
             }
-            categories[categories.length - 1].percentageShare = total_percentage;
+            categories[categories.length - 1].setPercentageShare(total_percentage);
         }
     }
 
     public void calculateDollarAmounts(){
         for(int i = 0; i < categories.length; i++){
-            float percentage = categories[i].percentageShare / 100.0f;
+            float percentage = categories[i].getPercentageShare() / 100.0f;
             dollarAmounts[i] = percentage * totalBudget;
         }
     }
@@ -49,19 +49,13 @@ public class Budget {
     }
 
     public void addCategory(String categoryName, int categoryPercentage){
-        if(categoryPercentage > categories[categories.length - 1].percentageShare){
-            IO.println("Not enough percentage left for this category");
-            return;
-        }
-
         BudgetCategory[] newCategories = new BudgetCategory[categories.length + 1];
         float[] newDollarAmounts = new float[dollarAmounts.length + 1];
 
         newCategories[0] = new BudgetCategory(categoryName, categoryPercentage);
         newDollarAmounts[0] = categoryPercentage * totalBudget;
 
-        if (newCategories[0].getName() == null){
-            IO.println("Invalid category name");
+        if(!isValidCategory(newCategories[0])){
             return;
         }
 
@@ -72,6 +66,13 @@ public class Budget {
         categories = newCategories;
         dollarAmounts = newDollarAmounts;
         updateBudget();
+    }
+
+    private boolean isValidCategory(BudgetCategory testCategory){
+        if(testCategory.getPercentageShare() == 0 || testCategory.getPercentageShare() > categories[categories.length - 1].getPercentageShare() || testCategory.getName() == null){
+            return false;
+        }
+        return true;
     }
 
 }

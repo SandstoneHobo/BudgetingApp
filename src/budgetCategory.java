@@ -1,13 +1,13 @@
 public class BudgetCategory {
     private String name;
-    public int percentageShare;
+    private int percentageShare;
 
     BudgetCategory(String categoryName, int categoryPercentage){
-        changeName(categoryName);
-        percentageShare=categoryPercentage;
+        setName(categoryName);
+        setPercentageShare(categoryPercentage);
     }
 
-    public void changeName(String newName){
+    public void setName(String newName){
         if(isValidName(newName)){
             name = newName;
         }
@@ -20,7 +20,17 @@ public class BudgetCategory {
         return testName.matches("[a-zA-Z]+");
     }
 
+    public void setPercentageShare(int newPercentage){
+        if(newPercentage > 100 || newPercentage < 0){
+            percentageShare = 0;
+        }
+        else{
+            percentageShare = newPercentage;
+        }
+    }
+
     public String getName(){
         return name;
     }
+    public int getPercentageShare(){ return percentageShare; }
 }
