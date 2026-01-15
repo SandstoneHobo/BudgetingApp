@@ -15,6 +15,11 @@ public class Budget {
         updateBudget();
     }
 
+    public void setTotalBudget(float newTotalBudget){
+        totalBudget = newTotalBudget;
+        updateBudget();
+    }
+
     public void updateBudget(){
         calculateLeftovers();
         calculateDollarAmounts();

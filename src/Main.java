@@ -6,4 +6,6 @@ void main() {
     my_budget.addCategory("Entertainment", 25);
     my_budget.printBudget();
     my_budget.addCategory("Rent", 30);
+    my_budget.setTotalBudget(20);
+    my_budget.printBudget();
 }
