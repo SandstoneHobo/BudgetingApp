@@ -12,7 +12,7 @@ public class BudgetCategory {
             name = newName;
         }
         else {
-            IO.println("Invalid name");
+            System.out.println("Invalid name");
         }
     }
 

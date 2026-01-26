@@ -49,7 +49,7 @@ public class Budget {
     public void printBudget(){
         for(int i = 0; i < categories.length; i++){
             String output = "Category %s : $%.2f";
-            IO.println(String.format(output, categories[i].getName(), dollarAmounts[i]));
+            System.out.println(String.format(output, categories[i].getName(), dollarAmounts[i]));
         }
     }
 
